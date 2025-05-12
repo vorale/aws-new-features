@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS New Features Update</title>
+    <style>
+        /* Medium-style typography and layout */
+        body {
+            font-family: 'Charter', 'Georgia', serif;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.84);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        .language-switch {
+            text-align: right;
+            margin-bottom: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .language-switch a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #0073bb;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .language-switch a.active {
+            font-weight: bold;
+            color: #FF9900;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            color: rgba(0, 0, 0, 0.54);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.54);
+        }
+        
+        .author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #232F3E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .author-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .publish-date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .dot {
+            margin: 0 6px;
+            font-size: 20px;
+            line-height: 1;
+            position: relative;
+            top: -2px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            margin-bottom: 40px;
+            border-radius: 5px;
+        }
+        
+        .summary {
+            font-size: 21px;
+            line-height: 1.58;
+            margin-bottom: 40px;
+            font-family: 'Charter', 'Georgia', serif;
+            border-left: 3px solid #FF9900;
+            padding-left: 20px;
+            color: rgba(0, 0, 0, 0.7);
+        }
+        
+        h2 {
+            font-size: 30px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .feature {
+            margin-bottom: 40px;
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .feature-link {
+            display: inline-block;
+            color: #0073bb;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            margin-top: 10px;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .feature-link:hover {
+            border-bottom-color: #0073bb;
+        }
+        
+        .pull-quote {
+            font-size: 24px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            margin: 40px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.54);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .share-buttons {
+            display: flex;
+        }
+        
+        .share-button {
+            margin-left: 15px;
+            color: rgba(0, 0, 0, 0.54);
+            text-decoration: none;
+        }
+        
+        /* Language display control */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        .zh-mode [lang="en"] {
+            display: none;
+        }
+        
+        .zh-mode [lang="zh"] {
+            display: block;
+        }
+        
+        .zh-mode .feature-title[lang="zh"],
+        .zh-mode .feature-description[lang="zh"],
+        .zh-mode .feature-link[lang="zh"],
+        .zh-mode h2[lang="zh"],
+        .zh-mode .title[lang="zh"],
+        .zh-mode .subtitle[lang="zh"],
+        .zh-mode .summary[lang="zh"],
+        .zh-mode .pull-quote[lang="zh"] {
+            display: block;
+        }
+    </style>
+    <script>
+        function switchLanguage(lang) {
+            if (lang === 'zh') {
+                document.body.classList.add('zh-mode');
+                document.getElementById('lang-zh').classList.add('active');
+                document.getElementById('lang-en').classList.remove('active');
+            } else {
+                document.body.classList.remove('zh-mode');
+                document.getElementById('lang-en').classList.add('active');
+                document.getElementById('lang-zh').classList.remove('active');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="language-switch">
+        <a id="lang-en" class="active" onclick="switchLanguage('en')">English</a>
+        <a id="lang-zh" onclick="switchLanguage('zh')">中文</a>
+    </div>
+
+    <div class="header">
+        <h1 class="title" lang="en">AWS New Features Update</h1>
+        <h1 class="title" lang="zh">AWS 新功能更新</h1>
+        
+        <div class="subtitle" lang="en">Weekly roundup of AWS service enhancements and regional expansions</div>
+        <div class="subtitle" lang="zh">AWS 服务增强和区域扩展的每周综述</div>
+        
+        <div class="meta">
+            <div class="author-img">AWS</div>
+            <div class="author-info">
+                <div class="author-name">AWS Gaming SA</div>
+                <div class="publish-date">
+                    <span class="date">May 10, 2025</span>
+                    <span class="dot">·</span>
+                    <span class="read-time">6 min read</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <img src="output/aws_blog_hero_new.png" alt="AWS Cloud Services" class="hero-image">
+    
+    <div class="summary" lang="en">
+        <!-- English summary will go here -->
+    </div>
+    
+    <div class="summary" lang="zh">
+        <!-- Chinese summary will go here -->
+    </div>
+
+    <div class="pull-quote" lang="en">
+        AWS continues to innovate across AI, infrastructure, and database services, expanding global reach and enhancing developer productivity.
+    </div>
+    
+    <div class="pull-quote" lang="zh">
+        AWS 继续在 AI、基础设施和数据库服务领域创新，扩大全球覆盖范围并提高开发人员生产力。
+    </div>
+
+    <h2 lang="en">AI and Machine Learning</h2>
+    <h2 lang="zh">AI 和机器学习</h2>
+    
+    <!-- AI features will go here -->
+
+    <h2 lang="en">Infrastructure</h2>
+    <h2 lang="zh">基础设施</h2>
+    
+    <!-- Infrastructure features will go here -->
+
+    <h2 lang="en">Databases and Analytics</h2>
+    <h2 lang="zh">数据库和分析</h2>
+    
+    <!-- Database features will go here -->
+
+    <h2 lang="en">Other Services</h2>
+    <h2 lang="zh">其他服务</h2>
+    
+    <!-- Other features will go here -->
+
+    <div class="footer">
+        <div class="copyright">© 2025 AWS Updates</div>
+        <div class="share-buttons">
+            <a href="#" class="share-button">Twitter</a>
+            <a href="#" class="share-button">LinkedIn</a>
+            <a href="#" class="share-button">Facebook</a>
+        </div>
+    </div>
+</body>
+</html>

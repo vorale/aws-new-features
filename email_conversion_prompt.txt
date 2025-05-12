@@ -1,0 +1,92 @@
+# AWS Email to Medium-Style Blog Conversion Workflow Prompt
+
+## Task Description
+Convert an AWS announcement email into a Medium-style blog post with bilingual (English/Chinese) support, featuring a hero image and a 200-word summary.
+
+## Input
+- An AWS announcement email (.eml file) in the current directory
+
+## Required Files to Create
+1. email_template.html - The base HTML template with Medium-style formatting
+2. aws_blog_YYYY-MM-DD.html - A fully populated HTML page with content from the email (with date in filename)
+3. summary.md - A 200-word summary of the email content in Markdown format
+4. hero_image.png - A featured hero image generated with AWS Nova Canvas
+
+## Medium-Style Design Requirements
+- Clean, minimalist design similar to Medium blogs
+- Large hero image behind or below the title
+- Typography-focused layout with ample white space
+- Elegant reading experience with proper line height and margins
+- Estimated reading time indicator
+- Language switching functionality between English and Chinese
+- Organized sections with clear visual hierarchy
+- Pull quotes or highlighted text for important announcements
+- Footer with placeholder for metadata and sharing options
+
+## Author Information
+- Author should be listed as "AWS Gaming SA"
+- Use "AWS" as the author initials in the profile image
+- Include appropriate author metadata in both English and Chinese versions
+- Maintain professional tone consistent with AWS Solutions Architect communications
+
+## Hero Image Generation
+- Use AWS Nova Canvas MCP to generate a hero image
+- The image should visually represent the main theme of the AWS announcements
+- Include AWS branding elements or colors (AWS orange, navy blue)
+- Create an abstract or conceptual representation of cloud technology
+- Ensure the image has good contrast for text overlay if needed
+- Suggested prompt for Nova Canvas: "A conceptual illustration representing [main theme of announcements] in AWS cloud services, with abstract technology elements, using AWS brand colors, minimalist style, suitable for a blog header"
+
+## Content Organization
+Organize the email content into these categories:
+- AI and Machine Learning
+- Infrastructure
+- Databases and Analytics
+- Other Services
+
+## Summary Format
+The summary should be a concise 200-word overview that highlights:
+- Key service announcements
+- Regional expansions
+- Important feature additions
+- Balanced coverage across service categories
+- Written in a more narrative, blog-like style
+
+## Translation Requirements
+- Translate all section headings, feature titles, and descriptions to Chinese
+- Ensure proper language attributes (lang="en" and lang="zh") for all content
+- Maintain consistent terminology for AWS services in Chinese
+- Adapt writing style to be more conversational and blog-like in both languages
+
+## HTML Structure
+The HTML should include:
+- Language switcher in the top-right corner
+- Header with title in both languages
+- Large hero image below the title
+- Author information showing "AWS Gaming SA" with appropriate styling
+- Estimated reading time
+- Summary section with content in both languages
+- Category sections with features in both languages
+- Pull quotes or highlighted text for emphasis
+- Footer with placeholder for metadata and sharing options
+- CSS for language switching functionality and Medium-style typography
+- JavaScript for toggling between languages
+
+## File Naming Convention
+- Use the format "aws_blog_YYYY-MM-DD.html" for the output HTML file
+- Extract the date from the email or use the current date if not available
+- This ensures each week's conversion is saved as a separate file
+
+## Workflow Steps
+1. Read and analyze the email content
+2. Extract the date from the email to use in the output filename
+3. Generate a hero image using AWS Nova Canvas MCP
+4. Create the HTML template with Medium-style formatting and language switching functionality
+5. Organize content by category
+6. Write a 200-word summary in English with a more narrative style
+7. Translate all content to Chinese
+8. Populate the HTML template with bilingual content and the hero image, using "AWS Gaming SA" as the author
+9. Save the final HTML with the date-based filename (aws_blog_YYYY-MM-DD.html)
+10. Create the summary.md file
+
+This workflow will transform AWS announcement emails into engaging, Medium-style bilingual blog posts with professional visuals and concise summaries, while preserving each week's content with unique filenames.

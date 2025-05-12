@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS New Features Update - May 10, 2025</title>
+    <style>
+        /* Medium-style typography and layout */
+        body {
+            font-family: 'Charter', 'Georgia', serif;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.84);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        .language-switch {
+            text-align: right;
+            margin-bottom: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .language-switch a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #0073bb;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .language-switch a.active {
+            font-weight: bold;
+            color: #FF9900;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            color: rgba(0, 0, 0, 0.54);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.54);
+        }
+        
+        .author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #232F3E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .author-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .publish-date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .dot {
+            margin: 0 6px;
+            font-size: 20px;
+            line-height: 1;
+            position: relative;
+            top: -2px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            margin-bottom: 40px;
+            border-radius: 5px;
+        }
+        
+        .summary {
+            font-size: 21px;
+            line-height: 1.58;
+            margin-bottom: 40px;
+            font-family: 'Charter', 'Georgia', serif;
+            border-left: 3px solid #FF9900;
+            padding-left: 20px;
+            color: rgba(0, 0, 0, 0.7);
+        }
+        
+        h2 {
+            font-size: 30px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .feature {
+            margin-bottom: 40px;
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .feature-link {
+            display: inline-block;
+            color: #0073bb;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            margin-top: 10px;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .feature-link:hover {
+            border-bottom-color: #0073bb;
+        }
+        
+        .pull-quote {
+            font-size: 24px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            margin: 40px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.54);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .share-buttons {
+            display: flex;
+        }
+        
+        .share-button {
+            margin-left: 15px;
+            color: rgba(0, 0, 0, 0.54);
+            text-decoration: none;
+        }
+        
+        /* Language display control */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        .zh-mode [lang="en"] {
+            display: none;
+        }
+        
+        .zh-mode [lang="zh"] {
+            display: block;
+        }
+        
+        .zh-mode .feature-title[lang="zh"],
+        .zh-mode .feature-description[lang="zh"],
+        .zh-mode .feature-link[lang="zh"],
+        .zh-mode h2[lang="zh"],
+        .zh-mode .title[lang="zh"],
+        .zh-mode .subtitle[lang="zh"],
+        .zh-mode .summary[lang="zh"],
+        .zh-mode .pull-quote[lang="zh"] {
+            display: block;
+        }
+    </style>
+    <script>
+        function switchLanguage(lang) {
+            if (lang === 'zh') {
+                document.body.classList.add('zh-mode');
+                document.getElementById('lang-zh').classList.add('active');
+                document.getElementById('lang-en').classList.remove('active');
+            } else {
+                document.body.classList.remove('zh-mode');
+                document.getElementById('lang-en').classList.add('active');
+                document.getElementById('lang-zh').classList.remove('active');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="language-switch">
+        <a id="lang-en" class="active" onclick="switchLanguage('en')">English</a>
+        <a id="lang-zh" onclick="switchLanguage('zh')">中文</a>
+    </div>
+
+    <div class="header">
+        <h1 class="title" lang="en">AWS New Features Update</h1>
+        <h1 class="title" lang="zh">AWS 新功能更新</h1>
+        
+        <div class="subtitle" lang="en">Weekly roundup of AWS service enhancements and regional expansions</div>
+        <div class="subtitle" lang="zh">AWS 服务增强和区域扩展的每周综述</div>
+        
+        <div class="meta">
+            <div class="author-img">AWS</div>
+            <div class="author-info">
+                <div class="author-name">AWS Gaming SA</div>
+                <div class="publish-date">
+                    <span class="date">May 10, 2025</span>
+                    <span class="dot">·</span>
+                    <span class="read-time">6 min read</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <img src="output/aws_blog_hero_new.png" alt="AWS Cloud Services" class="hero-image">
+    
+    <div class="summary" lang="en">
+        AWS has rolled out an impressive array of service enhancements and regional expansions this week, with significant developments across AI, infrastructure, and database services. In the AI domain, Amazon Q Developer integration with GitHub entered preview, enabling automated feature development, code reviews, and Java modernization within GitHub projects. This integration streamlines the developer experience by allowing teams to assign issues to Amazon Q Developer agents that automatically implement features and run code reviews. Additionally, Bedrock Data Automation now supports audio content extraction, while SageMaker AI enhanced Amazon Q Developer with private code suggestions and workspace context awareness.
+    </div>
+    
+    <div class="summary" lang="zh">
+        AWS 本周推出了一系列令人印象深刻的服务增强和区域扩展，在 AI、基础设施和数据库服务方面都有重大进展。在 AI 领域，Amazon Q Developer 与 GitHub 的集成进入预览版，支持在 GitHub 项目中自动化功能开发、代码审查和 Java 现代化。这种集成通过允许团队将问题分配给 Amazon Q Developer 代理来简化开发人员体验，这些代理会自动实现功能并运行代码审查。此外，Bedrock 数据自动化现在支持音频内容提取，而 SageMaker AI 则增强了 Amazon Q Developer，添加了私有代码建议和工作区上下文感知功能。
+    </div>
+
+    <div class="pull-quote" lang="en">
+        AWS continues to innovate across AI, infrastructure, and database services, expanding global reach and enhancing developer productivity.
+    </div>
+    
+    <div class="pull-quote" lang="zh">
+        AWS 继续在 AI、基础设施和数据库服务领域创新，扩大全球覆盖范围并提高开发人员生产力。
+    </div>
+
+    <h2 lang="en">AI and Machine Learning</h2>
+    <h2 lang="zh">AI 和机器学习</h2>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">GitHub Integration with Amazon Q Developer Preview Available</div>
+        <div class="feature-title" lang="zh">GitHub 集成 Amazon Q Developer 预览版上线</div>
+        <div class="feature-description" lang="en">
+            AWS announces the preview of the Amazon Q Developer integration in GitHub. Developers can use Amazon Q Developer agents for feature development, code review, and Java transformation within GitHub.com and GitHub Enterprise Cloud projects. After installing the Amazon Q Developer application from GitHub, developers can use labels to assign issues to Amazon Q Developer, which will automatically implement new features, generate bug fixes, run code reviews on pull requests, and modernize legacy Java applications.
+        </div>
+        <div class="feature-description" lang="zh">
+            AWS 宣布 Amazon Q Developer 与 GitHub 集成的预览版。开发人员可以在 GitHub.com 和 GitHub Enterprise Cloud 项目中使用 Amazon Q Developer 代理进行功能开发、代码审查和 Java 转换。安装 GitHub 上的 Amazon Q Developer 应用程序后，开发人员可以使用标签将问题分配给 Amazon Q Developer，它将自动实现新功能、生成错误修复、对拉取请求运行代码审查，并使旧版 Java 应用程序现代化。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-q-developer-integration-github-preview-available" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-q-developer-integration-github-preview-available" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">Bedrock Data Automation Adds Audio Content Extraction</div>
+        <div class="feature-title" lang="zh">Bedrock 数据自动化新增音频内容提取功能</div>
+        <div class="feature-description" lang="en">
+            Amazon Bedrock Data Automation (BDA) now supports extraction of custom GenAI-powered insights from audio by specifying the desired output configuration through blueprints. Developers can extract custom insights such as summaries, key topics, intents, and sentiment from voice conversations like customer calls, clinical discussions, and meetings. This helps improve employee productivity, reduce compliance costs, and enhance customer experience.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon Bedrock 数据自动化 (BDA) 现在支持通过蓝图指定所需的输出配置，从音频中提取由生成式 AI 驱动的自定义见解。开发人员可以从客户通话、临床讨论和会议等语音对话中提取摘要、关键主题、意图和情感等自定义见解。这有助于提高员工生产力，降低合规成本，并增强客户体验。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-bedrock-data-automation-extraction-custom-insights-audio" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-bedrock-data-automation-extraction-custom-insights-audio" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">SageMaker AI Enhances Amazon Q Developer with Custom Code Suggestions</div>
+        <div class="feature-title" lang="zh">SageMaker AI 增强 Amazon Q Developer 添加私有代码建议功能</div>
+        <div class="feature-description" lang="en">
+            Amazon SageMaker AI introduces significant enhancements to Amazon Q Developer in Jupyter Lab, adding customization of code suggestions based on private code repositories and the ability to include entire workspace context for improved code assistance. The new customization feature enables Amazon Q Developer to assist with software development that conforms to your team's internal libraries, proprietary algorithmic techniques, and enterprise code style.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon SageMaker AI 为 Jupyter Lab 中的 Amazon Q Developer 引入了重要增强功能，增加了基于私有代码库的代码建议定制化，以及包含整个工作区上下文以改进代码辅助的能力。新的定制功能使 Amazon Q Developer 能够协助符合团队内部库、专有算法技术和企业代码风格的软件开发。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-sagemaker-ai-q-developer-custom-code/" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-sagemaker-ai-q-developer-custom-code/" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">SageMaker HyperPod Integrates with EventBridge for Status Change Events</div>
+        <div class="feature-title" lang="zh">SageMaker HyperPod 集成 EventBridge 实现状态变更通知</div>
+        <div class="feature-description" lang="en">
+            Amazon SageMaker HyperPod now integrates with Amazon EventBridge, enabling near-real time notifications about changes in cluster status. SageMaker HyperPod delivers two types of notifications: Cluster Status Change Events that notify you when your HyperPod cluster transitions between states, and Node Health Events that notify you when nodes change health status or are automatically replaced during recovery from failures.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon SageMaker HyperPod 现已与 Amazon EventBridge 集成，实现集群状态变更的近实时通知。SageMaker HyperPod 提供两种类型的通知：集群状态变更事件（在 HyperPod 集群状态转换时通知您）和节点健康事件（在节点健康状态变更或在故障恢复期间自动替换时通知您）。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-sagemaker-hyperpod-integrates-amazon-eventbridge-status-change-events" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-sagemaker-hyperpod-integrates-amazon-eventbridge-status-change-events" class="feature-link" lang="zh">了解更多</a>
+    </div>
+
+    <h2 lang="en">Infrastructure</h2>
+    <h2 lang="zh">基础设施</h2>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">EC2 P5en Instances Available in US West (N. California) Region</div>
+        <div class="feature-title" lang="zh">EC2 P5en 实例在美国西部（加利福尼亚北部）区域上线</div>
+        <div class="feature-description" lang="en">
+            Amazon EC2 P5en instances powered by NVIDIA H200 GPUs are now available in the AWS US West (N. California) Region. These instances are optimized for generative AI and high performance computing applications. P5en instances feature 8 H200 GPUs with 1.7x GPU memory size and 1.4x GPU memory bandwidth than H100 GPUs featured in P5 instances.
+        </div>
+        <div class="feature-description" lang="zh">
+            由 NVIDIA H200 GPU 提供支持的 Amazon EC2 P5en 实例现已在 AWS 美国西部（加利福尼亚北部）区域推出。这些实例针对生成式 AI 和高性能计算应用程序进行了优化。P5en 实例配备 8 个 H200 GPU，与 P5 实例中的 H100 GPU 相比，GPU 内存大小提高了 1.7 倍，GPU 内存带宽提高了 1.4 倍。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-p5en-instances-aws-us-west-n-california-region" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-p5en-instances-aws-us-west-n-california-region" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">AWS Wavelength Zone Available in Lenexa, Kansas</div>
+        <div class="feature-title" lang="zh">AWS Wavelength 区域在堪萨斯州莱纳萨上线</div>
+        <div class="feature-description" lang="en">
+            AWS announces the general availability of AWS Wavelength in partnership with Verizon in Lenexa, Kansas. AWS Wavelength Zone enables customers to run applications using AWS infrastructure and services in AWS telco partners' data centers, addressing critical needs for low latency, data residency, and application resiliency across industries.
+        </div>
+        <div class="feature-description" lang="zh">
+            AWS 宣布与 Verizon 合作在堪萨斯州莱纳萨推出 AWS Wavelength 正式版。AWS Wavelength 区域使客户能够在 AWS 电信合作伙伴的数据中心中使用 AWS 基础设施和服务运行应用程序，满足各行业对低延迟、数据驻留和应用程序弹性的关键需求。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/aws-wavelength-zone-lenexa-kansas" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/aws-wavelength-zone-lenexa-kansas" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">EC2 X2idn Instances Available in Israel (Tel Aviv) Region</div>
+        <div class="feature-title" lang="zh">EC2 X2idn 实例在以色列（特拉维夫）区域上线</div>
+        <div class="feature-description" lang="en">
+            Memory-optimized Amazon EC2 X2idn instances are now available in AWS Israel (Tel Aviv) region. These instances, powered by 3rd generation Intel Xeon Scalable Processors and built with AWS Nitro System, are designed for memory-intensive workloads and are SAP-certified for running various SAP workloads.
+        </div>
+        <div class="feature-description" lang="zh">
+            内存优化型 Amazon EC2 X2idn 实例现已在 AWS 以色列（特拉维夫）区域推出。这些实例由第三代英特尔至强可扩展处理器提供支持，采用 AWS Nitro 系统构建，专为内存密集型工作负载设计，并通过 SAP 认证，可运行各种 SAP 工作负载。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-x2idn-instances-aws-israel-tel-aviv-region" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-x2idn-instances-aws-israel-tel-aviv-region" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">EC2 R7g Instances Available in Additional AWS Regions</div>
+        <div class="feature-title" lang="zh">EC2 R7g 实例在多个新区域上线</div>
+        <div class="feature-description" lang="en">
+            Amazon EC2 R7g instances are now available in AWS Middle East (UAE), Canada West (Calgary), Europe (Paris, Zurich), Asia Pacific (Jakarta, Osaka), and Israel (Tel Aviv) Regions. These instances are powered by AWS Graviton3 processors that provide up to 25% better compute performance compared to AWS Graviton2 processors.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon EC2 R7g 实例现已在 AWS 中东（阿联酋）、加拿大西部（卡尔加里）、欧洲（巴黎、苏黎世）、亚太地区（雅加达、大阪）和以色列（特拉维夫）区域推出。这些实例由 AWS Graviton3 处理器提供支持，与 AWS Graviton2 处理器相比，计算性能提高了 25%。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-r7g-instances-additional-aws-regions" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-r7g-instances-additional-aws-regions" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">EC2 C8gd/M8gd/R8gd Instances Available in Europe (Frankfurt)</div>
+        <div class="feature-title" lang="zh">EC2 C8gd/M8gd/R8gd 实例在欧洲（法兰克福）区域上线</div>
+        <div class="feature-description" lang="en">
+            Amazon EC2 C8gd, M8gd, and R8gd instances with up to 11.4 TB of local NVMe-based SSD block-level storage are now available in AWS Region Europe (Frankfurt). These instances are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-based instances.
+        </div>
+        <div class="feature-description" lang="zh">
+            配备高达 11.4 TB 本地 NVMe 基础 SSD 块级存储的 Amazon EC2 C8gd、M8gd 和 R8gd 实例现已在 AWS 欧洲（法兰克福）区域推出。这些实例由 AWS Graviton4 处理器提供支持，与基于 Graviton3 的实例相比，性能提高了 30%。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-8gd-m8gd-r8gd-instances-aws-region-europe-frankfurt" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-8gd-m8gd-r8gd-instances-aws-region-europe-frankfurt" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">EC2 Inf2 Instances Available in Korea</div>
+        <div class="feature-title" lang="zh">EC2 Inf2 实例在韩国区域上线</div>
+        <div class="feature-description" lang="en">
+            Amazon EC2 Inf2 instances, optimized for generative AI, are now generally available in the AWS Asia Pacific (Seoul) Region. These instances deliver up to 40% lower inference costs over comparable Amazon EC2 instances and are ideal for applications like text summarization, code generation, and image generation.
+        </div>
+        <div class="feature-description" lang="zh">
+            针对生成式 AI 优化的 Amazon EC2 Inf2 实例现已在 AWS 亚太地区（首尔）区域正式推出。这些实例与同类 Amazon EC2 实例相比，推理成本最多降低 40%，非常适合文本摘要、代码生成和图像生成等应用。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-inf2-instances-available-korea" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ec2-inf2-instances-available-korea" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <h2 lang="en">Databases and Analytics</h2>
+    <h2 lang="zh">数据库和分析</h2>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">Amazon Redshift Serverless Available in Asia Pacific (Hyderabad) Region</div>
+        <div class="feature-title" lang="zh">Amazon Redshift Serverless 在亚太地区（海得拉巴）上线</div>
+        <div class="feature-description" lang="en">
+            Amazon Redshift Serverless, which allows you to run and scale analytics without having to provision and manage data warehouse clusters, is now generally available in the AWS Asia Pacific (Hyderabad) region. With Amazon Redshift Serverless, all users can use Amazon Redshift to get insights from data in seconds.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon Redshift Serverless 允许您无需预置和管理数据仓库集群即可运行和扩展分析，现已在 AWS 亚太地区（海得拉巴）正式推出。借助 Amazon Redshift Serverless，所有用户都可以使用 Amazon Redshift 在几秒钟内从数据中获取见解。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-redshift-serverless-aws-asia-pacific-hyderabad-region" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-redshift-serverless-aws-asia-pacific-hyderabad-region" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">Amazon DocumentDB Available in Europe (Stockholm) Region</div>
+        <div class="feature-title" lang="zh">Amazon DocumentDB 在欧洲（斯德哥尔摩）区域上线</div>
+        <div class="feature-description" lang="en">
+            Amazon DocumentDB (with MongoDB compatibility), a fully managed, native JSON database, is now available in the AWS Europe (Stockholm) Region. Amazon DocumentDB provides scalability and durability for mission-critical MongoDB workloads, supporting millions of requests per second and can be scaled to 15 low latency read replicas in minutes.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon DocumentDB（与 MongoDB 兼容）是一种完全托管的原生 JSON 数据库，现已在 AWS 欧洲（斯德哥尔摩）区域推出。Amazon DocumentDB 为关键任务 MongoDB 工作负载提供可扩展性和持久性，支持每秒数百万个请求，并且可以在几分钟内扩展到 15 个低延迟读取副本。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-document-db-mongodb-compatibility-aws-europe-stockholm-region" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-document-db-mongodb-compatibility-aws-europe-stockholm-region" class="feature-link" lang="zh">了解更多</a>
+    </div>
+
+    <h2 lang="en">Other Services</h2>
+    <h2 lang="zh">其他服务</h2>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">Amazon ECS Adds One-Click Service Deployment Rollbacks</div>
+        <div class="feature-title" lang="zh">Amazon ECS 新增一键式服务部署回滚功能</div>
+        <div class="feature-description" lang="en">
+            Amazon Elastic Container Service (Amazon ECS) announced a new feature that allows you to easily rollback your Amazon ECS service to a previous safe state if a deployment fails. With the new stopDeployment API action, ECS automatically rolls back the service to the last service revision that reached steady state.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon Elastic Container Service (Amazon ECS) 宣布推出一项新功能，允许您在部署失败时轻松将 Amazon ECS 服务回滚到先前的安全状态。通过新的 stopDeployment API 操作，ECS 会自动将服务回滚到上一个达到稳定状态的服务修订版本。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ecs-1-click-rollbacks-service-deployments" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/amazon-ecs-1-click-rollbacks-service-deployments" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">Amazon EBS Announces Provisioned Rate for Volume Initialization</div>
+        <div class="feature-title" lang="zh">Amazon EBS 推出卷初始化预置速率功能</div>
+        <div class="feature-description" lang="en">
+            Amazon Elastic Block Store (Amazon EBS) announces the general availability of Provisioned Rate for Volume Initialization. This feature helps you create fully performant Amazon EBS volumes from Amazon EBS Snapshots with predictability, helping speed up Amazon EC2 Instance launches at scale, disaster recovery, and volume copy workflows.
+        </div>
+        <div class="feature-description" lang="zh">
+            Amazon Elastic Block Store (Amazon EBS) 宣布卷初始化预置速率功能正式推出。此功能可帮助您以可预测的方式从 Amazon EBS 快照创建完全高性能的 Amazon EBS 卷，有助于加速大规模 Amazon EC2 实例启动、灾难恢复和卷复制工作流程。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/ebs-provisioned-rate-volume-initialization/" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/ebs-provisioned-rate-volume-initialization/" class="feature-link" lang="zh">了解更多</a>
+    </div>
+    
+    <div class="feature">
+        <div class="feature-title" lang="en">AWS Shield Advanced Available in Thailand and Mexico Regions</div>
+        <div class="feature-title" lang="zh">AWS Shield Advanced 在泰国和墨西哥区域上线</div>
+        <div class="feature-description" lang="en">
+            AWS Shield Advanced is now available in the AWS Asia Pacific (Thailand) and AWS Mexico (Central) regions. AWS Shield Advanced is a managed application security service that safeguards applications running on AWS from distributed denial of service (DDoS) attacks.
+        </div>
+        <div class="feature-description" lang="zh">
+            AWS Shield Advanced 现已在 AWS 亚太地区（泰国）和 AWS 墨西哥（中部）区域推出。AWS Shield Advanced 是一项托管应用程序安全服务，可保护在 AWS 上运行的应用程序免受分布式拒绝服务 (DDoS) 攻击。
+        </div>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/aws-shield-advanced-thailand-mexico-regions/" class="feature-link" lang="en">Learn more</a>
+        <a href="https://aws.amazon.com/about-aws/whats-new/2025/05/aws-shield-advanced-thailand-mexico-regions/" class="feature-link" lang="zh">了解更多</a>
+    </div>
+
+    <div class="footer">
+        <div class="copyright">© 2025 AWS Updates</div>
+        <div class="share-buttons">
+            <a href="#" class="share-button">Twitter</a>
+            <a href="#" class="share-button">LinkedIn</a>
+            <a href="#" class="share-button">Facebook</a>
+        </div>
+    </div>
+</body>
+</html>
