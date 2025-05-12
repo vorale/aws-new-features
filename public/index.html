@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS New Features Blog</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #232f3e;
+            color: white;
+            border-radius: 5px;
+        }
+        h1 {
+            margin: 0;
+            color: #ff9900;
+        }
+        .subtitle {
+            color: #ccc;
+            font-style: italic;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .blog-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .card-image {
+            height: 160px;
+            background-color: #eaeaea;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-title {
+            margin-top: 0;
+            color: #232f3e;
+        }
+        .card-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .card-excerpt {
+            margin-bottom: 15px;
+        }
+        .read-more {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #ff9900;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .read-more:hover {
+            background-color: #e88a00;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #eaeaea;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            color: #555;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #eaeaea;
+        }
+        .amazon-q-image {
+            background-image: linear-gradient(135deg, #232f3e 0%, #3a4d69 100%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AWS New Features Blog</h1>
+        <p class="subtitle">Stay updated with the latest AWS services and features</p>
+    </header>
+    
+    <main>
+        <div class="blog-grid">
+            <!-- Amazon Q Blog Card -->
+            <article class="blog-card">
+                <div class="card-image amazon-q-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Amazon Q</h2>
+                    <p class="card-date">May 12, 2025</p>
+                    <div class="card-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Developer Tools</span>
+                    </div>
+                    <p class="card-excerpt">
+                        Amazon Q is a generative AI-powered assistant that helps developers build, deploy, and operate applications with contextual assistance.
+                    </p>
+                    <a href="AmazonQ.html" class="read-more">Read More</a>
+                </div>
+            </article>
+            
+            <!-- Amazon Bedrock Blog Card -->
+            <article class="blog-card">
+                <div class="card-image" style="background-color: #19232f;"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Amazon Bedrock</h2>
+                    <p class="card-date">May 10, 2025</p>
+                    <div class="card-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Machine Learning</span>
+                    </div>
+                    <p class="card-excerpt">
+                        Amazon Bedrock is a fully managed service that offers foundation models from leading AI companies through a unified API.
+                    </p>
+                    <a href="#" class="read-more">Coming Soon</a>
+                </div>
+            </article>
+            
+            <!-- AWS Lambda Blog Card -->
+            <article class="blog-card">
+                <div class="card-image" style="background-color: #f58536;"></div>
+                <div class="card-content">
+                    <h2 class="card-title">AWS Lambda Updates</h2>
+                    <p class="card-date">May 5, 2025</p>
+                    <div class="card-tags">
+                        <span class="tag">Serverless</span>
+                        <span class="tag">Compute</span>
+                    </div>
+                    <p class="card-excerpt">
+                        New AWS Lambda features including increased memory limits, improved cold start performance, and enhanced monitoring capabilities.
+                    </p>
+                    <a href="#" class="read-more">Coming Soon</a>
+                </div>
+            </article>
+            
+            <!-- Amazon S3 Blog Card -->
+            <article class="blog-card">
+                <div class="card-image" style="background-color: #8c3123;"></div>
+                <div class="card-content">
+                    <h2 class="card-title">S3 Express One Zone</h2>
+                    <p class="card-date">April 28, 2025</p>
+                    <div class="card-tags">
+                        <span class="tag">Storage</span>
+                        <span class="tag">Performance</span>
+                    </div>
+                    <p class="card-excerpt">
+                        S3 Express One Zone delivers single-digit millisecond data access for your most performance-sensitive applications.
+                    </p>
+                    <a href="#" class="read-more">Coming Soon</a>
+                </div>
+            </article>
+            
+            <!-- Amazon EKS Blog Card -->
+            <article class="blog-card">
+                <div class="card-image" style="background-color: #326ce5;"></div>
+                <div class="card-content">
+                    <h2 class="card-title">EKS Anywhere</h2>
+                    <p class="card-date">April 20, 2025</p>
+                    <div class="card-tags">
+                        <span class="tag">Containers</span>
+                        <span class="tag">Kubernetes</span>
+                    </div>
+                    <p class="card-excerpt">
+                        EKS Anywhere now supports additional infrastructure providers and enhanced management capabilities for on-premises Kubernetes.
+                    </p>
+                    <a href="#" class="read-more">Coming Soon</a>
+                </div>
+            </article>
+            
+            <!-- AWS CloudFormation Blog Card -->
+            <article class="blog-card">
+                <div class="card-image" style="background-color: #2e73b8;"></div>
+                <div class="card-content">
+                    <h2 class="card-title">CloudFormation Enhancements</h2>
+                    <p class="card-date">April 15, 2025</p>
+                    <div class="card-tags">
+                        <span class="tag">IaC</span>
+                        <span class="tag">DevOps</span>
+                    </div>
+                    <p class="card-excerpt">
+                        New CloudFormation features including improved drift detection, faster deployments, and enhanced template validation.
+                    </p>
+                    <a href="#" class="read-more">Coming Soon</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 AWS New Features Blog | All rights reserved</p>
+        <p>This is a demo site for showcasing AWS services and features</p>
+    </footer>
+</body>
+</html>

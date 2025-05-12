@@ -1,0 +1,12 @@
+{
+  "name": "aws-new-features",
+  "version": "1.0.0",
+  "description": "A collection of the latest AWS features and services",
+  "scripts": {
+    "dev": "serve public",
+    "build": "echo 'No build step required for static site'"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
